@@ -154,6 +154,7 @@ def cadastrar_usuario():
 
     return '\nUsuário cadastrado com sucesso!!'
 
+
 match resultado:
     case 1:
         #Bloco feito por André Cristian
@@ -183,9 +184,49 @@ match resultado:
     case 4:
         print('Registre a devolução do livro')
     case 5:
-        print('Vou listar todos os livros disponíveis')
+        # Bloco feito por Luis Felipe - Livros disponíveis
+        print('\n========== LIVROS DISPONÍVEIS ==========')
+
+        quantidade = 0
+
+        for livro in bibliteca:
+            if livro['Situação: '] == 'Disponível':
+                quantidade += 1
+
+                codigo = livro.get('Código:', livro.get('Código: ', 'Não informado'))
+
+                print(f"\nCódigo: {codigo}")
+                print(f"Título: {livro['Título: ']}")
+                print(f"Autor: {livro['Autor: ']}")
+
+        if quantidade == 0:
+            print('\nNenhum livro disponível no momento.')
+        else:
+            print(f'\nTotal de livros disponíveis: {quantidade}')
+
     case 6:
-        print('Vou listar todos os livros que foram emprestados')
+        # Bloco feito por Luis Felipe - Livros emprestados
+        print('\n========== LIVROS EMPRESTADOS ==========')
+
+        quantidade = 0
+
+        for livro in bibliteca:
+            if livro['Situação: '] == 'Emprestado':
+                quantidade += 1
+
+                codigo = livro.get('Código:', livro.get('Código: ', 'Não informado'))
+
+                print(f"\nCódigo: {codigo}")
+                print(f"Título: {livro['Título: ']}")
+                print(f"Autor: {livro['Autor: ']}")
+
+                responsavel = livro.get('Usuário: ', 'Não informado')
+                print(f"Emprestado para: {responsavel}")
+
+        if quantidade == 0:
+            print('\nNenhum livro emprestado no momento.')
+        else:
+            print(f'\nTotal de livros emprestados: {quantidade}')
     case 7:
         print('Vou listar todos os emprestimos atrasados')
     case _:
