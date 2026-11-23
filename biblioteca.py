@@ -181,6 +181,28 @@ match resultado:
 
     case 3:
         print('Resgistre o emprestimo do livro')
+        #Bloco feito por João Gabriel Lima
+         \\ Registrar empréstimo informando a data (DD/MM) e calcular a data de devolução. 
+
+
+dia = int(input("Dia do empréstimo: "))
+mes = int(input("Mês do empréstimo: "))
+
+prazo = 7
+
+dias_mes = [31, 28, 31, 30, 31, 30,
+            31, 31, 30, 31, 30, 31]
+
+dia = dia + prazo
+
+if dia > dias_mes[mes - 1]:
+    dia = dia - dias_mes[mes - 1]
+    mes = mes + 1
+
+    if mes > 12:
+        mes = 1
+
+print("Data da devolução:", dia, "/", mes)
     case 4:
         print('Registre a devolução do livro')
     case 5:
