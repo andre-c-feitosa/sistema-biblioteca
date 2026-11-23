@@ -182,8 +182,7 @@ match resultado:
     case 3:
         print('Resgistre o emprestimo do livro')
         #Bloco feito por João Gabriel Lima
-         \\ Registrar empréstimo informando a data (DD/MM) e calcular a data de devolução. 
-
+# Registrar empréstimo e calcular a devolução
 
 dia = int(input("Dia do empréstimo: "))
 mes = int(input("Mês do empréstimo: "))
@@ -193,18 +192,38 @@ prazo = 7
 dias_mes = [31, 28, 31, 30, 31, 30,
             31, 31, 30, 31, 30, 31]
 
-dia = dia + prazo
+if 1 <= mes <= 12 and 1 <= dia <= dias_mes[mes - 1]:
+    dia = dia + prazo
 
-if dia > dias_mes[mes - 1]:
-    dia = dia - dias_mes[mes - 1]
-    mes = mes + 1
+    if dia > dias_mes[mes - 1]:
+        dia = dia - dias_mes[mes - 1]
+        mes = mes + 1
 
-    if mes > 12:
-        mes = 1
+        if mes > 12:
+            mes = 1
 
-print("Data da devolução:", dia, "/", mes)
+    print("Data da devolução:", dia, "/", mes)
+else:
+    print("Data inválida!")
     case 4:
         print('Registre a devolução do livro')
+        case 4:
+        # Registrar devolução do livro
+    # Bloco feito por João Gabriel Lima 
+        print('Registre a devolução do livro')
+
+        codigo = input('Código do livro: ')
+
+        for livro in bibliteca:
+            if livro.get('Código:', livro.get('Código: ')) == codigo:
+                if livro['Situação: '] == 'Emprestado':
+                    livro['Situação: '] = 'Disponível'
+                    print('Livro devolvido com sucesso!')
+                else:
+                    print('Este livro já está disponível!')
+                break
+        else:
+            print('Livro não encontrado!')
     case 5:
         # Bloco feito por Luis Felipe - Livros disponíveis
         print('\n========== LIVROS DISPONÍVEIS ==========')
