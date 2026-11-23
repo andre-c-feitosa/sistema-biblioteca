@@ -270,6 +270,33 @@ else:
             print(f'\nTotal de livros emprestados: {quantidade}')
     case 7:
         print('Vou listar todos os emprestimos atrasados')
+    case 7:
+        # Bloco feito por João Gabriel Lima / Listar empréstimos atrasados
+        print('Empréstimos atrasados')
+
+        dia = int(input('Dia atual: '))
+        mes = int(input('Mês atual: '))
+
+        atrasados = 0
+
+        for livro in bibliteca:
+            if livro['Situação: '] == 'Emprestado':
+
+                data = livro.get('Data devolução: ')
+
+                if data:
+                    partes = data.split('/')
+                    dia_dev = int(partes[0])
+                    mes_dev = int(partes[1])
+
+                    if mes > mes_dev or (mes == mes_dev and dia > dia_dev):
+                        print('Livro:', livro['Título: '])
+                        print('Devolução prevista:', data)
+                        atrasados += 1
+
+        if atrasados == 0:
+            print('Nenhum empréstimo atrasado!')
+
     case _:
         print('Você selecionou um serviço inválido')
 
