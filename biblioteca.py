@@ -6,7 +6,7 @@
 #    - André Cristian -> 126100318
 #    - Luis Felipe ->
 #    - Matheus Victor -> 
-#    - João Gabriel Lima -> 
+#    - João Gabriel Lima -> 126100059
 
 # O valor de K é igual a 37!
 
