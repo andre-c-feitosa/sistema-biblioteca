@@ -1,11 +1,11 @@
-# Nome do Projeto: Sistema de Empréstimos da Biblioteca
+#Nome do Projeto: Sistema de Empréstimos da Biblioteca
 
 # Numero do Grupo: 04
 
 # Nome dos integrantes e número das matriculas, respectivamente:
 #    - André Cristian -> 126100318
 #    - Luis Felipe ->
-#    - Matheus Victor -> 
+#    - Matheus Victor ->
 #    - João Gabriel Lima -> 126100059
 
 # O valor de K é igual a 37!
@@ -109,16 +109,16 @@ bibliteca = [
         'Autor: ': 'Tamio Shimizu',
         'Situação: ': 'Disponível',
     },
-    
+
 ]
 usuario = []
 
 #Bloco feito por André Cristian (cadastro de livros)
-def cadastrar_livro():   
+def cadastrar_livro():
     print('\nPara cadastrar o livro você precisa das seguites informações: \n')
 
-    código = input('Código do livro: ') 
-    titulo = input('Título do livro: ') 
+    código = input('Código do livro: ')
+    titulo = input('Título do livro: ')
     autor = input('Autor do Livro: ')
 
     tratamento_situacao = input('\nO livro está disponível ? [s/n]: ').lower()
@@ -133,9 +133,9 @@ def cadastrar_livro():
         'Autor: ': autor,
         'Situação: ': situacao
     }
-    
+
     bibliteca.append(novo_livro)
-            
+
     return '\nLivro cadastrado com sucesso!!'
 
 #Bloco feito por André Cristian (cadastro de usuários)
@@ -182,34 +182,32 @@ match resultado:
     case 3:
         print('Resgistre o emprestimo do livro')
         #Bloco feito por João Gabriel Lima
-# Registrar empréstimo e calcular a devolução
+        # Registrar empréstimo e calcular a devolução
 
-dia = int(input("Dia do empréstimo: "))
-mes = int(input("Mês do empréstimo: "))
+        dia = int(input("Dia do empréstimo: "))
+        mes = int(input("Mês do empréstimo: "))
 
-prazo = 7
+        prazo = 7
 
-dias_mes = [31, 28, 31, 30, 31, 30,
-            31, 31, 30, 31, 30, 31]
+        dias_mes = [31, 28, 31, 30, 31, 30,
+                    31, 31, 30, 31, 30, 31]
 
-if 1 <= mes <= 12 and 1 <= dia <= dias_mes[mes - 1]:
-    dia = dia + prazo
+        if 1 <= mes <= 12 and 1 <= dia <= dias_mes[mes - 1]:
+            dia = dia + prazo
 
-    if dia > dias_mes[mes - 1]:
-        dia = dia - dias_mes[mes - 1]
-        mes = mes + 1
+            if dia > dias_mes[mes - 1]:
+                dia = dia - dias_mes[mes - 1]
+                mes = mes + 1
 
-        if mes > 12:
-            mes = 1
+                if mes > 12:
+                    mes = 1
 
-    print("Data da devolução:", dia, "/", mes)
-else:
-    print("Data inválida!")
+            print("Data da devolução:", dia, "/", mes)
+        else:
+            print("Data inválida!")
     case 4:
-        print('Registre a devolução do livro')
-        case 4:
         # Registrar devolução do livro
-    # Bloco feito por João Gabriel Lima 
+        # Bloco feito por João Gabriel Lima
         print('Registre a devolução do livro')
 
         codigo = input('Código do livro: ')
@@ -269,8 +267,6 @@ else:
         else:
             print(f'\nTotal de livros emprestados: {quantidade}')
     case 7:
-        print('Vou listar todos os emprestimos atrasados')
-    case 7:
         # Bloco feito por João Gabriel Lima / Listar empréstimos atrasados
         print('Empréstimos atrasados')
 
@@ -278,6 +274,7 @@ else:
         mes = int(input('Mês atual: '))
 
         atrasados = 0
+        sem_data = 0
 
         for livro in bibliteca:
             if livro['Situação: '] == 'Emprestado':
@@ -293,10 +290,14 @@ else:
                         print('Livro:', livro['Título: '])
                         print('Devolução prevista:', data)
                         atrasados += 1
+                else:
+                    sem_data += 1
 
         if atrasados == 0:
-            print('Nenhum empréstimo atrasado!')
+            print('Nenhum empréstimo com atraso confirmado.')
+
+        if sem_data > 0:
+            print(f'Empréstimos sem data de devolução para conferir: {sem_data}')
 
     case _:
         print('Você selecionou um serviço inválido')
-
