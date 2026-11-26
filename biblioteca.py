@@ -4,8 +4,8 @@
 
 # Nome dos integrantes e número das matriculas, respectivamente:
 #    - André Cristian -> 126100318
-#    - Luis Felipe ->
-#    - Matheus Victor ->
+#    - Luis Felipe -> 126100055
+#    - Matheus Victor -> 126100395
 #    - João Gabriel Lima -> 126100059
 
 # O valor de K é igual a 37!
